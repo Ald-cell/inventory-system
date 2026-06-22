@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+Route::redirect('/', '/inventories');
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MBuildingController;
 use App\Http\Controllers\MRoomController;
@@ -10,9 +12,9 @@ use App\Http\Controllers\TInventoryController;
 use App\Http\Controllers\TInventoryTransactionController;
 use App\Http\Controllers\TInventoryRoomController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\DashboardController;
+
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::get(
     '/dashboard',
