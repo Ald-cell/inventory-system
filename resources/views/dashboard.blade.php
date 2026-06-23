@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -25,9 +26,11 @@
             transform:translateY(-5px);
         }
 
-        .icon{
-            font-size:40px;
-            opacity:.8;
+        .menu-btn{
+            padding:20px;
+            font-size:18px;
+            font-weight:600;
+            border-radius:12px;
         }
     </style>
 </head>
@@ -47,6 +50,7 @@
         Dashboard Inventory Asset
     </h1>
 
+    <!-- Statistik -->
     <div class="row g-4">
 
         <div class="col-md-3">
@@ -87,7 +91,72 @@
 
     </div>
 
+    <!-- Menu Sistem -->
     <div class="card shadow mt-5">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Menu Sistem Inventory</h5>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row g-3">
+
+                <div class="col-md-3">
+                    <a href="{{ route('items.index') }}"
+                       class="btn btn-primary w-100 menu-btn">
+                        📦 Data Barang
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{{ route('item-types.index') }}"
+                       class="btn btn-success w-100 menu-btn">
+                        🏷 Jenis Barang
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{{ route('buildings.index') }}"
+                       class="btn btn-warning w-100 menu-btn">
+                        🏢 Gedung
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{{ route('rooms.index') }}"
+                       class="btn btn-info w-100 menu-btn">
+                        🚪 Ruangan
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{{ route('inventories.index') }}"
+                       class="btn btn-danger w-100 menu-btn">
+                        📋 Data Inventory
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{{ route('inventory-rooms.index') }}"
+                       class="btn btn-secondary w-100 menu-btn">
+                        📍 Penempatan Barang
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{{ route('inventory-transactions.index') }}"
+                       class="btn btn-dark w-100 menu-btn">
+                        🔄 Transaksi Inventory
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Ringkasan -->
+    <div class="card shadow mt-4 mb-5">
         <div class="card-header bg-white">
             <h5 class="mb-0">Ringkasan Sistem</h5>
         </div>
@@ -104,3 +173,4 @@
 
 </body>
 </html>
+```
