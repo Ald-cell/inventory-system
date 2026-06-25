@@ -28,25 +28,28 @@ class TInventoryController extends Controller
 
     public function index(Request $request)
 {
-    $inventories = TInventory::with('item');
+    $query = TInventory::with('item');
+
+    if ($request->status) {
+        $query->where('status', $request->status);
+    }
 
     if ($request->search) {
 
-        $inventories->whereHas(
+        $query->whereHas(
             'item',
-            function ($query) use ($request) {
+            function ($q) use ($request) {
 
-                $query->where(
+                $q->where(
                     'item_name',
                     'like',
                     '%' . $request->search . '%'
                 );
             }
         );
-
     }
 
-    $inventories = $inventories->get();
+    $inventories = $query->get();
 
     return view(
         'inventories.index',

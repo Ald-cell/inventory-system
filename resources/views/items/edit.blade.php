@@ -11,7 +11,6 @@
     @method('PUT')
 
     <div class="mb-3">
-
         <label>Nama Barang</label>
 
         <input
@@ -19,11 +18,9 @@
             name="item_name"
             value="{{ $item->item_name }}"
             class="form-control">
-
     </div>
 
     <div class="mb-3">
-
         <label>Satuan</label>
 
         <input
@@ -31,39 +28,31 @@
             name="unit"
             value="{{ $item->unit }}"
             class="form-control">
-
     </div>
 
     <div class="mb-3">
-
         <label>Jenis Barang</label>
 
-        <select
-            name="item_type_id"
-            class="form-control">
+        <select name="item_type_id"
+                class="form-control">
 
             @foreach($itemTypes as $itemType)
 
-            <option
-                value="{{ $itemType->item_type_id }}"
-                {{ $item->item_type_id == $itemType->item_type_id ? 'selected' : '' }}>
+                <option value="{{ $itemType->item_type_id }}"
+                    {{ $item->item_type_id == $itemType->item_type_id ? 'selected' : '' }}>
 
-                {{ $itemType->item_type_name }}
+                    {{ $itemType->item_type_name }}
 
-            </option>
+                </option>
 
             @endforeach
 
         </select>
-
     </div>
 
-    <button
-        type="submit"
-        class="btn btn-success">
-
+    <button type="submit"
+            class="btn btn-success">
         Update
-
     </button>
 
 </form>

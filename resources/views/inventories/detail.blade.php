@@ -1,70 +1,104 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Detail Inventory</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<h1>Detail Inventory</h1>
+@section('content')
 
-@if($inventory->foto)
-    <img
-        src="{{ asset('storage/'.$inventory->foto) }}"
-        width="250"
-    >
-@endif
+<div class="container mt-4">
 
-<table>
+    <div class="card shadow">
 
-<tr>
-    <td>Barang</td>
-    <td>{{ $inventory->item->item_name }}</td>
-</tr>
+        <div class="card-header bg-primary text-white">
 
-<tr>
-    <td>Merk</td>
-    <td>{{ $inventory->merk }}</td>
-</tr>
+            <h3 class="mb-0">
+                Detail Inventory
+            </h3>
 
-<tr>
-    <td>Barcode</td>
-    <td>{{ $inventory->barcode }}</td>
-</tr>
+        </div>
 
-<tr>
-    <td><b>QR Code</b></td>
-    <td>
-        {!! QrCode::size(150)->generate($inventory->barcode) !!}
-    </td>
-</tr>
+        <div class="card-body">
 
-<tr>
-    <td>Quantity</td>
-    <td>{{ $inventory->quantity }}</td>
-</tr>
+            <div class="row">
 
-<tr>
-    <td>Harga</td>
-    <td>Rp {{ number_format($inventory->price,0,',','.') }}</td>
-</tr>
+                <div class="col-md-4 text-center">
 
-<tr>
-    <td>Status</td>
-    <td>{{ $inventory->status }}</td>
-</tr>
+                    @if($inventory->foto)
 
-<tr>
-    <td>Spesifikasi</td>
-    <td>{{ $inventory->specification }}</td>
-</tr>
+                        <img
+                            src="{{ asset('storage/'.$inventory->foto) }}"
+                            class="img-fluid rounded shadow"
+                            style="max-height:300px;">
 
-</table>
+                    @endif
 
-<br>
+                    <div class="mt-3">
 
-<a href="{{ route('inventories.index') }}">
-    Kembali
-</a>
+                        {!! QrCode::size(180)->generate($inventory->barcode) !!}
 
-</body>
-</html>
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th width="30%">Barang</th>
+                            <td>{{ $inventory->item->item_name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Merk</th>
+                            <td>{{ $inventory->merk }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Barcode</th>
+                            <td>{{ $inventory->barcode }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Quantity</th>
+                            <td>{{ $inventory->quantity }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Harga</th>
+                            <td>
+                                Rp {{ number_format($inventory->price,0,',','.') }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ $inventory->status }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Spesifikasi</th>
+                            <td>{{ $inventory->specification }}</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+
+            <a href="{{ route('inventories.index') }}"
+               class="btn btn-secondary">
+
+                Kembali
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+@endsection

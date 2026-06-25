@@ -43,12 +43,30 @@ public function show(string $id)
 
 public function edit(string $id)
 {
-    //
+    $item = MItem::findOrFail($id);
+
+    $itemTypes = MItemType::all();
+
+    return view(
+        'items.edit',
+        compact(
+            'item',
+            'itemTypes'
+        )
+    );
 }
 
 public function update(Request $request, string $id)
 {
-    //
+    $item = MItem::findOrFail($id);
+
+    $item->update([
+        'item_name'    => $request->item_name,
+        'unit'         => $request->unit,
+        'item_type_id' => $request->item_type_id,
+    ]);
+
+    return redirect()->route('items.index');
 }
 
 public function destroy(string $id)

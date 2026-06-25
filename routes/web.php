@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MBuildingController;
 use App\Http\Controllers\MRoomController;
@@ -9,29 +8,54 @@ use App\Http\Controllers\MItemController;
 use App\Http\Controllers\TInventoryController;
 use App\Http\Controllers\TInventoryTransactionController;
 use App\Http\Controllers\TInventoryRoomController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
-// Halaman utama
-Route::get('/', [DashboardController::class, 'index']);
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get(
     '/dashboard',
     [DashboardController::class, 'index']
-)->name('dashboard');
+)->middleware(['auth'])
+ ->name('dashboard');
 
-Route::resource('buildings', MBuildingController::class);
-Route::resource('rooms', MRoomController::class);
-Route::resource('item-types', MItemTypeController::class);
-Route::resource('items', MItemController::class);
-Route::resource('inventories', TInventoryController::class);
-Route::resource('inventory-transactions', TInventoryTransactionController::class);
-Route::resource('inventory-rooms', TInventoryRoomController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource(
+    'users',
+    UserController::class
+);
 
-Route::get(
-    '/inventories/{id}/detail',
-    [TInventoryController::class, 'detail']
-)->name('inventories.detail');
+    Route::resource('buildings', MBuildingController::class);
+    Route::resource('rooms', MRoomController::class);
+    Route::resource('item-types', MItemTypeController::class);
+    Route::resource('items', MItemController::class);
+    Route::resource('inventories', TInventoryController::class);
+    Route::resource('inventory-transactions', TInventoryTransactionController::class);
+    Route::resource('inventory-rooms', TInventoryRoomController::class);
 
-Route::get(
-    '/inventories/{id}/pdf',
-    [TInventoryController::class, 'pdf']
-)->name('inventories.pdf');
+    Route::get('/inventories/{id}/detail',
+        [TInventoryController::class, 'detail']
+    )->name('inventories.detail');
+
+    Route::get('/inventories/{id}/pdf',
+        [TInventoryController::class, 'pdf']
+    )->name('inventories.pdf');
+
+    Route::get('/profile',
+        [ProfileController::class, 'edit']
+    )->name('profile.edit');
+
+    Route::patch('/profile',
+        [ProfileController::class, 'update']
+    )->name('profile.update');
+
+    Route::delete('/profile',
+        [ProfileController::class, 'destroy']
+    )->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

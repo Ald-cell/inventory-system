@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TInventoryRoom extends Model
 {
     protected $table = 't_inventory_room';
+
     protected $primaryKey = 'inventory_room_id';
 
     protected $guarded = [];

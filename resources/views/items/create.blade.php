@@ -30,17 +30,19 @@
     <div class="mb-3">
         <label>Jenis Barang</label>
 
-        <select name="item_id">
+        <select
+            name="item_type_id"
+            class="form-control">
 
-    @foreach($items as $item)
+            @foreach($itemTypes as $itemType)
 
-        <option value="{{ $item->item_id }}">
-            {{ $item->item_name }}
-        </option>
+                <option value="{{ $itemType->item_type_id }}">
+                    {{ $itemType->item_type_name }}
+                </option>
 
-    @endforeach
+            @endforeach
 
-</select>
+        </select>
 
     </div>
 
