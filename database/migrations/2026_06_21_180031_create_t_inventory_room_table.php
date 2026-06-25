@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up(): void
-    {
+{
+    if (!Schema::hasTable('t_inventory_room')) {
+
         Schema::create('t_inventory_room', function (Blueprint $table) {
 
             $table->id('inventory_room_id');
@@ -31,8 +33,11 @@ return new class extends Migration
                   ->references('room_id')
                   ->on('m_rooms')
                   ->onDelete('cascade');
+
         });
+
     }
+}
 
     public function down(): void
     {
