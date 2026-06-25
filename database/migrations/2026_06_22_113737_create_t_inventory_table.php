@@ -11,30 +11,15 @@ return new class extends Migration
      */
    public function up(): void
 {
-    Schema::create('t_inventory', function (Blueprint $table) {
+    if (!Schema::hasTable('t_inventory')) {
 
-        $table->id('inventory_id');
+        Schema::create('t_inventory', function (Blueprint $table) {
 
-        $table->unsignedBigInteger('item_id');
+            // isi migration tetap
 
-        $table->unsignedBigInteger('room_id');
+        });
 
-        $table->integer('qty');
-
-        $table->string('condition')->default('Baik');
-
-        $table->timestamps();
-
-        $table->foreign('item_id')
-              ->references('item_id')
-              ->on('m_items')
-              ->onDelete('cascade');
-
-        $table->foreign('room_id')
-              ->references('room_id')
-              ->on('m_rooms')
-              ->onDelete('cascade');
-    });
+    }
 }
 
     /**

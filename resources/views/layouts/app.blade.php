@@ -49,7 +49,7 @@
 
         .content{
     margin-left:250px;
-    padding:20px 25px;
+    padding:15px 20px;
 }
 
         .sidebar a{
@@ -203,6 +203,31 @@
         transform:translateX(0);
     }
     to{
+        transform:translateX(-100%);
+    }
+}
+
+.running-text{
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    background:#fff;
+}
+
+.running-text span{
+    display:inline-block;
+    padding-left:100%;
+    color:#212529;
+    font-size:14px;
+    font-weight:600;
+    animation:runningText 15s linear infinite;
+}
+
+@keyframes runningText{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
         transform:translateX(-100%);
     }
 }
@@ -369,7 +394,7 @@
 
     <small>
 
-        © {{ date('Y') }} Inventory Asset System
+        © {{ date('Y') }} Aldiyanra Saputra | Inventory Asset System
 
     </small>
 

@@ -21,7 +21,8 @@
     Total Barang
 </p>
 
-<h1 class="fw-bold display-4">
+<h1 class="fw-bold mb-0"
+    style="font-size:52px;">
     {{ $totalBarang }}
 </h1>
 
@@ -46,7 +47,8 @@
     Total Quantity
 </p>
 
-<h1 class="fw-bold display-4">
+<h1 class="fw-bold mb-0"
+    style="font-size:52px;">
     {{ $totalInventory }}
 </h1>
 
@@ -71,7 +73,8 @@
     Barang Aktif
 </p>
 
-<h1 class="fw-bold display-4">
+<h1 class="fw-bold mb-0"
+    style="font-size:52px;">
     {{ $barangAktif }}
 </h1>
 
@@ -114,7 +117,7 @@
     <div class="row">
 
         <!-- Grafik -->
-        <div class="col-md-3">
+        <div class="col-md-4">
 
             <div class="card shadow">
 
@@ -139,7 +142,7 @@
         </div>
 
         <!-- Menu Sistem -->
-        <div class="col-md-9">
+        <div class="col-md-8">
 
             <div class="card shadow">
 
@@ -263,26 +266,25 @@
 
     </div>
 
-    <div class="card shadow mt-2">
+    <div class="card shadow mt-3">
 
     <div class="card-header bg-dark text-white">
-
         Informasi Sistem
-
     </div>
 
-    <div class="card-body py-1 px-2">
+    <div class="card-body py-2 px-3">
 
-        <marquee
-            behavior="scroll"
-            direction="left"
-            scrollamount="6">
+        <marquee behavior="scroll"
+                 direction="left"
+                 scrollamount="5">
 
-            Sistem Informasi Inventory Asset digunakan untuk mengelola Data Barang, Inventory, Jenis Barang, Gedung, Ruangan, Penempatan Barang, Transaksi Inventory dan Manajemen User secara real-time.
+            🚀 Sistem Informasi Inventory Asset digunakan untuk mengelola Data Barang, Inventory, Jenis Barang, Gedung, Ruangan, Penempatan Barang, Transaksi Inventory dan Manajemen User secara real-time.
 
         </marquee>
 
     </div>
+
+</div>
 
 </div>
 
