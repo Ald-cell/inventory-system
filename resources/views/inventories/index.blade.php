@@ -6,7 +6,6 @@
 
 <div class="card shadow border-0">
 
-```
 <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
 
     <h4 class="mb-0">
@@ -245,7 +244,6 @@
     </div>
 
 </div>
-```
 
 </div>
 

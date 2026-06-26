@@ -31,9 +31,12 @@
 
                     <div class="mt-3">
 
-                        {!! QrCode::size(180)->generate($inventory->barcode) !!}
+    <div class="alert alert-info">
+        <strong>Barcode:</strong><br>
+        {{ $inventory->barcode }}
+    </div>
 
-                    </div>
+</div>
 
                 </div>
 
